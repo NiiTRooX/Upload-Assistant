@@ -140,7 +140,7 @@ async def upload_image_task(args: Sequence[Any]) -> dict[str, Any]:
             try:
                 async with httpx.AsyncClient() as client:
                     async with aiofiles.open(image, 'rb') as file:
-                        files = {'image': (os.path.basename(image), await file.read())}
+                        files = [('image', (os.path.basename(image), await file.read()))]
 
                     try:
                         response = await client.post(
@@ -153,7 +153,7 @@ async def upload_image_task(args: Sequence[Any]) -> dict[str, Any]:
                         response.raise_for_status()
                         response_data = response.json()
 
-                        if not response_data or 'links' not in response_data:
+                        if not response_data or 'links' not in response_data or not response_data['links']:
                             return {'status': 'failed', 'reason': "Invalid JSON response from sungodra"}
 
                         img_url = response_data['links'][0]
