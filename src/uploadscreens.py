@@ -128,6 +128,50 @@ async def upload_image_task(args: Sequence[Any]) -> dict[str, Any]:
             except Exception as e:
                 console.print(f"[red][ptpimg] Exception: {str(e)}")
                 return {'status': 'failed', 'reason': f"Error during ptpimg upload: {str(e)}"}
+            
+        elif img_host == "sungodra":
+            try:
+                payload = {
+                    'api_key': config['DEFAULT']['sungodra_api'].strip()
+                }
+            except KeyError:
+                return {'status': 'failed', 'reason': 'Missing sungodra API key in config'}
+
+            try:
+                async with httpx.AsyncClient() as client:
+                    async with aiofiles.open(image, 'rb') as file:
+                        files = {'image': (os.path.basename(image), await file.read())}
+
+                    try:
+                        response = await client.post(
+                            "https://thesungod.xyz/api/image/upload",
+                            data=payload,
+                            files=files,
+                            timeout=timeout
+                        )
+
+                        response.raise_for_status()
+                        response_data = response.json()
+
+                        if not response_data or 'links' not in response_data:
+                            return {'status': 'failed', 'reason': "Invalid JSON response from sungodra"}
+
+                        img_url = response_data['links'][0]
+                        raw_url = img_url
+                        web_url = img_url
+
+                    except httpx.TimeoutException:
+                        console.print("[red][sungodra] Request timed out.")
+                        return {'status': 'failed', 'reason': 'Request timed out'}
+                    except json.JSONDecodeError as e:
+                        console.print(f"[red][sungodra] JSONDecodeError: {str(e)}")
+                        return {'status': 'failed', 'reason': 'Invalid JSON response from sungodra'}
+                    except ValueError as e:
+                        console.print(f"[red][sungodra] ValueError: {str(e)}")
+                        return {'status': 'failed', 'reason': f"Request failed: {str(e)}"}
+            except Exception as e:
+                console.print(f"[red][sungodra] Exception: {str(e)}")
+                return {'status': 'failed', 'reason': f"Error during sungodra upload: {str(e)}"}
 
         elif img_host == "imgbb":
             url = "https://api.imgbb.com/1/upload"
