@@ -318,6 +318,13 @@ async def disc_screenshots(
                 elif img_host and img_host in ["ptpimg", "lensdump", "ptscreens", "onlyimage", "dalexni", "zipline", "passtheimage", "seedpool_cdn", "sharex", "utppm"]:
                     if meta['debug']:
                         console.print(f"[green]Image {image_path} meets size requirements for {img_host}.[/green]")
+                elif img_host and "sungodra" in img_host:
+                    if image_size <= 100000000:
+                        if meta['debug']:
+                            console.print(f"[green]Image {image_path} meets size requirements for sungodra.[/green]")
+                    else:
+                        console.print(f"[red]Image {image_path} with size {image_size} bytes: does not meet size requirements for sungodra, retaking.")
+                        retake = True
                 else:
                     console.print(f"[red]Unknown image host or image doesn't meet requirements for host: {img_host}, retaking.")
                     retake = True
@@ -349,6 +356,10 @@ async def disc_screenshots(
                         elif img_host and img_host in ["ptpimg", "lensdump", "ptscreens", "onlyimage", "dalexni", "zipline", "passtheimage", "seedpool_cdn", "sharex", "utppm"] and new_size > 75000:
                             console.print(f"[green]Successfully retaken screenshot for: {image_path} ({new_size} bytes)[/green]")
                             valid_image = True
+                        elif img_host and "sungodra" in img_host:
+                            if new_size <= 100000000:
+                                console.print(f"[green]Successfully retaken screenshot for: {image_path} ({new_size} bytes)[/green]")
+                                valid_image = True
 
                         if valid_image:
                             valid_results.append(image_path)
@@ -1135,6 +1146,13 @@ async def screenshots(
                 elif img_host and img_host in ["ptpimg", "lensdump", "ptscreens", "onlyimage", "dalexni", "zipline", "passtheimage", "seedpool_cdn", "sharex", "utppm"]:
                     if meta['debug']:
                         console.print(f"[green]Image {image_path} meets size requirements for {img_host}.[/green]")
+                elif img_host and "sungodra" in img_host:
+                    if image_size <= 100000000:
+                        if meta['debug']:
+                            console.print(f"[green]Image {image_path} meets size requirements for sungodra.[/green]")
+                    else:
+                        console.print(f"[red]Image {image_path} with size {image_size} bytes: does not meet size requirements for sungodra, retaking.")
+                        retake = True
                 else:
                     console.print(f"[red]Unknown image host or image doesn't meet requirements for host: {img_host}, retaking.")
                     retake = True
@@ -1181,6 +1199,9 @@ async def screenshots(
                             elif img_host and img_host in ["ptpimg", "lensdump", "ptscreens", "onlyimage", "dalexni", "zipline", "passtheimage", "seedpool_cdn", "sharex", "utppm"] and new_size > 75000:
                                 console.print(f"[green]Successfully retaken screenshot for: {screenshot_path} ({new_size} bytes)[/green]")
                                 valid_image = True
+                            elif img_host and "sungodra" in img_host:
+                                if image_size <= 100000000:
+                                    console.print(f"[green]Image {image_path} meets size requirements for sungodra.[/green]")
 
                             if valid_image:
                                 valid_results.append(screenshot_path)
@@ -1221,6 +1242,9 @@ async def screenshots(
                                 valid_image = True
                         elif img_host and img_host in ["ptpimg", "lensdump", "ptscreens", "onlyimage", "dalexni", "zipline", "passtheimage", "seedpool_cdn", "sharex", "utppm"] and new_size > 75000:
                             valid_image = True
+                        elif img_host and "sungodra" in img_host:
+                            if image_size <= 100000000:
+                                valid_image = True
 
                         if valid_image:
                             valid_results.append(screenshot_path)
