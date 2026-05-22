@@ -393,6 +393,7 @@ def get_img_host(
     img_host_api_map: dict[str, Union[str, list[str], None]] = {
         "imgbb": "imgbb_api",
         "ptpimg": "ptpimg_api",
+        "sungodra": "sungodra_api",
         "lensdump": "lensdump_api",
         "ptscreens": "ptscreens_api",
         "onlyimage": "onlyimage_api",
