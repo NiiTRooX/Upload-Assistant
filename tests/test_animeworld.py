@@ -42,14 +42,15 @@ def test_animeworld_get_name_handles_german_title_and_audio():
         anime=True,
     )
     name = asyncio.run(tracker.get_name(meta))["name"]
-    assert name.startswith("Deutscher Titel 2024")  # noqa: S101
+    assert name.startswith("Deutscher.Titel.2024")  # noqa: S101
     assert "German.DL" in name  # noqa: S101
 
 
 def test_animeworld_rejects_unattended_prohibited_release():
     tracker = _tracker()
     meta = Meta(
-        path="/releases/Movie.2024.CAM-GRP/movie.mkv",
+        isdir=True,
+        path="/releases/Movie.2024.CAM-GRP",
         filelist=["/releases/Movie.2024.CAM-GRP/movie.mkv"],
         unattended=True,
         requested_release=True,
@@ -61,10 +62,9 @@ def test_animeworld_rejects_unattended_prohibited_release():
 def test_animeworld_rejects_non_anime_release():
     tracker = _tracker()
     meta = Meta(
-        path="/releases/Movie.2024-GRP/movie.mkv",
+        isdir=True,
+        path="/releases/Movie.2024-GRP",
         filelist=["/releases/Movie.2024-GRP/movie.mkv"],
-        unattended=True,
-        requested_release=True,
         anime=False,
     )
     assert not asyncio.run(tracker.get_additional_checks(meta))  # noqa: S101
