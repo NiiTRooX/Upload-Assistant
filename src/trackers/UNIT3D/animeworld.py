@@ -235,13 +235,15 @@ class AnimeWorld(UNIT3D):
         # TV specific
         season = str(meta.season or "")
         episode = str(meta.episode or "")
+        if "TV" in meta.category:
+            year = ""
 
         # Optional fields
         edition = meta.edition
         hdr = meta.hdr
         uhd = str(meta.uhd or "")
         three_d = meta.three_d
-        bit_depth = meta.bit_depth if "10" in meta.bit_depth else ""
+        bit_depth = "10bit" if "10" in meta.bit_depth else ""
 
         # extract tags from basename for potential later use
         basename_up = self.get_basename(meta).upper()
