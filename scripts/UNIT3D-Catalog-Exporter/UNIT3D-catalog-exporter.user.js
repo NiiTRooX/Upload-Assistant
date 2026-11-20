@@ -15,6 +15,7 @@
   // Known UNIT3D domains from src/trackersetup.py and tracker base_url/tracker_urls.
   const TRACKER_HOSTNAMES = {
     "aither.cc": "aither",
+    "animeworld.cx": "animeworld",
     "bitporn.eu": "bitporn",
     "blutopia.cc": "blutopia",
     "capybarabr.com": "capybarabr",

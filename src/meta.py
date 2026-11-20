@@ -23,6 +23,7 @@ _TRACKER_ID_ALIASES = {
     "PTP": "PASSTHEPOPCORN",
     "RHD": "ROCKETHD",
     "FLD": "FLOOD",
+    "AW": "ANIMEWORLD",
 }
 
 

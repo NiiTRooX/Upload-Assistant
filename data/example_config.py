@@ -589,7 +589,7 @@ config: dict[str, Any] = {
         # Note: Description layout settings (like screenshot grids, logos, etc.) can be overridden per-tracker.
         # See: https://github.com/wastaken7/Upload-Assistant/blob/development/docs/description-builder.md
         # Available trackers:
-        #   1PTBA, AITHER, ALPHARATIO, AMIGOSSHARE, ANTHELION, ASIANCINEMA, AVISTAZ, BEYONDHD, BITHDTV, BITPORN, BJSHARE, BLUTOPIA,
+        #   1PTBA, AITHER, ALPHARATIO, AMIGOSSHARE, ANIMEWORLD, ANTHELION, ASIANCINEMA, AVISTAZ, BEYONDHD, BITHDTV, BITPORN, BJSHARE, BLUTOPIA,
         #   BRASILTRACKER, BROADCASTHENET, CAPYBARABR, CATHODERAYTUBE, CINEMATIK, CINEMAZ, CURUPIRA, CZTEAM, DARKPEERS, DESITORRENTS,
         #   DIGITALCORE, DIRTYBYTES, DREADVAULT, DRUNKENSLUG, EMUWAREZ, EXOTICAZ, FILEIPLAY, FILELIST, FLOOD, FUNFILE, GREATPOSTERWALL, HAPPYFAPPY, HAWKEUNO, HDBITS, HDSPACE, HDTORRENTS, HOMIEHELPDESK,
         #   IMMORTALSEED, INFINITYHD, IPTORRENTS, ITATORRENTS, KUFIRC, LAJIDUI, LASTDIGITALUNDERGROUND, LATTEAM, LEMONHD, LOCADORA, LONGPT, LST,
@@ -3769,6 +3769,17 @@ config: dict[str, Any] = {
             # See: https://github.com/wastaken7/Upload-Assistant/blob/development/docs/example-config.md#how-to-export-cookies
             "announce_url": "",
             "anon": True,
+        },
+        "ANIMEWORLD": {
+            "cli_alias": "AW",
+            # Instead of using the tracker acronym for folder name when sym/hard linking, you can use a custom name
+            "link_dir_name": "",
+            # "use_for_search": False, set to True if you want to use AnimeWorld for automatic ID searching or description parsing
+            "use_for_search": False,
+            "api_key": "",
+            "anon": True,
+            # Use German title instead of English title, if available
+            "use_german_title": False,
         },
         "MANUAL": {
             "cli_alias": "MANUAL",

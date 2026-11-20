@@ -1346,6 +1346,7 @@ const trackerNameMap = {
   AITHER: "Aither",
   ALPHARATIO: "AlphaRatio",
   AMIGOSSHARE: "Amigos Share Club",
+  ANIMEWORLD: "AnimeWorld",
   ANTHELION: "Anthelion",
   ASIANCINEMA: "AsianCinema",
   AVISTAZ: "AvistaZ",
