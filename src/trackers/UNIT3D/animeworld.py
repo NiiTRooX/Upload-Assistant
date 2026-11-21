@@ -266,9 +266,9 @@ class AnimeWorld(UNIT3D):
 
             num_langs = len(audio_langs)
 
-            if num_langs == 1:
-                # One language (GERMAN or non-GERMAN)
-                audio_lang_str = audio_langs[0]
+            if num_langs == 1 and "GERMAN" in audio_langs:
+                # One language (GERMAN)
+                audio_lang_str = "German"
 
             elif num_langs == 2:
                 # Two languages ("German.DL" if GERMAN is present, "[lang].DL" if not)
@@ -310,7 +310,7 @@ class AnimeWorld(UNIT3D):
         if effective_type == "DISC":
             region = meta.region
             dvd_size = meta.dvd_size
-            name = f"{title} {year} {season}{episode} {incomplete} {three_d} {edition} {audio} {resolution} Untouched {region} {uhd} {source} {dvd_size} {hdr} {bit_depth} {video_codec} {repack}"
+            name = f"{title} {year} {season}{episode} {incomplete} {three_d} {edition} {audio_lang_str} {audio} {resolution} Untouched {region} {uhd} {source} {dvd_size} {hdr} {bit_depth} {video_codec} {repack}"
         elif effective_type == "REMUX":
             name = f"{title} {year} {season}{episode} {incomplete} {three_d} {edition} {hybrid} {audio_lang_str} {audio} {resolution} {uhd} {source} {hdr} {bit_depth} {video_codec} Remux {repack}"
         elif effective_type in ("DVDRIP", "BRRIP"):
