@@ -320,7 +320,7 @@ class AnimeWorld(UNIT3D):
             name = f"{title} {year} {season}{episode} {incomplete} {three_d} {edition} {hybrid} {audio_lang_str} {audio} {resolution} {uhd} {source} {hdr} {bit_depth} {video_encode} {repack}"
         elif effective_type in ("WEBDL", "WEBRIP"):
             service = str(meta.service or "")
-            type_str = "WEB-DL" if effective_type == "WEBDL" else "WEBRip"
+            type_str = "WEB" if effective_type == "WEBDL" else "WebRip"
             name = f"{title} {year} {season}{episode} {incomplete} {three_d} {edition} {hybrid} {audio_lang_str} {audio} {resolution} {uhd} {service} {type_str} {hdr} {bit_depth} {video_encode} {repack}"
         else:
             logger.info(f"{self.tracker}: [bold red]Name enrichment failed. Please manually update the name after Uploading.[/bold red]")
