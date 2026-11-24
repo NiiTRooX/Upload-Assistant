@@ -297,6 +297,7 @@ class AnimeWorld(UNIT3D):
         effective_type = str(meta.type or "")
 
         source = source.replace("Blu-ray", "BluRay")
+        video_encode = video_encode.replace("Hi10P", "")
 
         # Detect Hybrid from filename if not in title
         hybrid = ""
