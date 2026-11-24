@@ -254,6 +254,9 @@ class AnimeWorld(UNIT3D):
         if "DD+" in audio:
             audio = audio.replace("DD+", "DDP")
 
+        # Remove audio channels
+        audio = re.sub(r"\s*\b\d+(?:\.\d+)+\b", "", audio)
+
         # Build audio language tag
         audio_lang_str = ""
         if meta.audio_languages:
